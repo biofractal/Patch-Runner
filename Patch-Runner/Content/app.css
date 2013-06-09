@@ -1,0 +1,5 @@
+﻿body {
+	padding-top: 20px;
+}
+.table-striped tbody tr.highlight td { background-color: red; }
+
