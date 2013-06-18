@@ -13,7 +13,7 @@ namespace Patch_Runner.Modules
 		{
 			this.RequiresAuthentication();
 
-			Get["/"] = _ =>
+			Get["/patches"] = _ =>
 			{
 				ViewBag.AllPatches = PatchService.GetAllPatches();
 				return View["patches"];

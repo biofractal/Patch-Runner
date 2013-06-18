@@ -1,5 +1,4 @@
 ﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
-
 <!DOCTYPE HTML>
 <html>
 <head>
@@ -9,22 +8,47 @@
 	<link href="../Content/app.css" rel="stylesheet" />
 </head>
 
-<body class="text-center">
+<body>
 	<div class="container">
-		<div class="row well text-center span10">
-			<h2 class="text-center" style="margin-bottom:40px;">Patch Runner</h2>
-			<div class="form-horizontal">
-				<select id="patch-name" class="span8">
-					@foreach (string name in ViewBag.AllPatches.Value)
-	 {
-						<option value="@name">@name</option>
-	 }
-				</select>
-				<span style="margin-left: 20px"><a id="patch-run" href="#" class="btn btn-primary">Run</a></span>
-			</div>
-			<div style="margin-top: 20px;">
-				<span><a id="recent-view" href="#" class="btn">View Recent</a></span>
-				<span style="margin-left: 10px"><a href="/logout" class="btn">Sign Out</a></span>
+		<div class="row">
+			<div class="span10 well">
+				<h2 style="margin-bottom: 40px;">Patch Runner</h2>
+				<div class="form-horizontal">
+					<div class="control-group">
+						<div class="controls">
+							<div class="btn-group">
+								<button id="recent-view" class="btn"><i class="icon-eye-open"></i> View Recent</button>
+								<a href="/logout" class="btn"><i class="icon-off"></i> Sign Out</a>
+								<a id="patch-run" href="#" class="btn btn-primary"><i class="icon-play-circle icon-white"></i> Run Patch</a>
+							</div>
+
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label label-left">Filter</label>
+						<div class="controls">
+							<div class="input-prepend">
+								<span class="add-on"><i class="icon-search"></i></span>
+								<input type="text" class="input-xlarge span4" placeholder="type here to filter patch list" />
+							</div>
+						</div>
+					</div>
+					<div class="control-group">
+						<label class="control-label label-left">Patches</label>
+						<div class="controls">
+							<div class="input-prepend">
+								<span class="add-on"><i class="icon-play-circle"></i></span>
+								<select id="patch-name" class="span6">
+									@foreach (string name in ViewBag.AllPatches.Value)
+		 {
+										<option value="@name">@name</option>
+		 }
+								</select>
+
+							</div>
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 	</div>
