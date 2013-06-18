@@ -136,13 +136,12 @@
     <Compile Include="Library\Patches\TestError.cs" />
     <Compile Include="Library\Patches\TestLog.cs" />
     <Compile Include="Library\Patches\TestLogList.cs" />
+    <Compile Include="Library\Patches\UpdateDefaultEmailsToGmail.cs" />
     <Compile Include="Modules\MainModule.cs" />
     <Compile Include="Modules\LoginModule.cs" />
     <Compile Include="PatchHub.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Services\ThumbsUpApi.cs" />
     <Compile Include="Services\PatchService.cs" />
-    <Compile Include="Domain\User.cs" />
     <Content Include="Views\patches.cshtml">
       <SubType>Code</SubType>
     </Content>
@@ -163,6 +162,7 @@
       <Name>Nancy.Helper</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -193,7 +193,8 @@
 if $(ConfigurationName) == Debug (
 xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.17.1\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
 xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.17.1\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"
-)</PostBuildEvent>
+)
+</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>
     <PreBuildEvent>CD "$(SolutionDir)Tools\JurassicCoffee"

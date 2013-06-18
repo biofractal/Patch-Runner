@@ -14,22 +14,29 @@ namespace Patch_Runner
 		protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
 		{
 			base.ApplicationStartup(container, pipelines);
+
 			this.Conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("Scripts"));
-			container.Register<IUserMapper, ThumbsUpApi>();
+			container.Register<IUserMapper, ThumbsUpApi>();	
+			pipelines.AfterRequest += ctx =>
+			{
+				ctx.CheckForIfNoneMatch();
+				ctx.CheckForIfModifiedSince();
+			};
 			RouteTable.Routes.MapHubs();
 		}
-		
+
 
 
 		protected override void RequestStartup(TinyIoCContainer requestContainer, IPipelines pipelines, NancyContext context)
 		{
 			base.RequestStartup(requestContainer, pipelines, context);	
+
 			pipelines.OnError += (ctx, ex) =>
 			{
 				Log.Error("Unhandled error on request: " + context.Request.Url, ex);
 				return null;
 			};
-			Log.Request(context.Request);
+
 			var formsAuthConfiguration = new FormsAuthenticationConfiguration()
 				{
 					RedirectUrl = "~/login",

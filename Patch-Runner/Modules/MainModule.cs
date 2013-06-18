@@ -21,7 +21,7 @@ namespace Patch_Runner.Modules
 
 			Get["/logout"] = x =>
 			{
-				var thumbKey = ((User)Context.CurrentUser).ThumbKey;
+				var thumbKey = ((ThumbsUpApi.ThumbsUpUser)Context.CurrentUser).ThumbKey;
 				ThumbsUpApi.Logout(thumbKey);
 				return this.LogoutAndRedirect("~/");
 			};
