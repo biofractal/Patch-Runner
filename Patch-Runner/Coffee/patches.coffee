@@ -3,6 +3,8 @@ $ ->
 	hub = $.connection.patchHub
 	client = hub.client
 
+	$('#patch-name').combobox()
+
 	$('#recent-view').click -> showRecent()
 	$('#recent-clear').click -> 
 		$('#recent-modal .btn-stateful').disable()

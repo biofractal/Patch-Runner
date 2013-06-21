@@ -19,7 +19,7 @@ namespace Patch_Runner.Modules
 				return View["patches"];
 			};
 
-			Get["/logout"] = x =>
+			Get["/logout"] = _ =>
 			{
 				var thumbKey = ((ThumbsUpApi.ThumbsUpUser)Context.CurrentUser).ThumbKey;
 				ThumbsUpApi.Logout(thumbKey);

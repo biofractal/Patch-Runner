@@ -111,6 +111,7 @@
   <ItemGroup>
     <None Include="Coffee\patches.coffee" />
     <None Include="Coffee\jqExtends.coffee" />
+    <Content Include="Content\bootstrap-combobox.min.css" />
     <Content Include="Library\Resources\links-for-staging.csv">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -120,6 +121,7 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\images\glyphicons-halflings-white.png" />
     <Content Include="Content\images\glyphicons-halflings.png" />
+    <Content Include="Scripts\bootstrap-combobox.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jqExtends.min.js" />
     <Content Include="Scripts\jquery-2.0.0.min.js" />

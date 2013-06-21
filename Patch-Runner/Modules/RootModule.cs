@@ -11,7 +11,7 @@ namespace Patch_Runner.Modules
 	{
 		public RootModule()
 		{
-			Get["/"] = x =>
+			Get["/"] = _ =>
 			{
 				return Response.AsRedirect("/patches");
 			};

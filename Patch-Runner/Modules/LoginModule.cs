@@ -11,21 +11,37 @@ namespace Patch_Runner.Modules
 	{
 		public LoginModule()
 		{
-			Get["/login"] = x =>
+			Get["/login"] = _ =>
 			{
-				ViewBag.Error = this.Request.Query.error.HasValue;
+				if (Request.Query.error.HasValue)
+				{
+					ViewBag.HasError = true;
+					ViewBag.ErrorNumber = Request.Query.error;
+				}
 				return View["login"];
 			};
 
-			Post["/login"] = x =>
+			Post["/login"] = _ =>
 			{
 				var thumbKey = ThumbsUpApi.ValidateUser((string)this.Request.Form.Username, (string)this.Request.Form.Password);
 				if (thumbKey == null)
 				{
-					return this.Context.GetRedirect("~/login?error=true");
+					return this.Context.GetRedirect("~/login?error=1");
 				}
 				return this.LoginAndRedirect(thumbKey.Value);
 			};
+
+			Get["/sso/{thumbkey}"] = url =>
+			{
+				Guid thumbKey;
+				var success = Guid.TryParse(url.thumbkey, out thumbKey);
+				if (success) success = ThumbsUpApi.ValidateKey(thumbKey);
+				if (!success)
+				{
+					return this.Context.GetRedirect("~/login?error=2");
+				}
+				return this.LoginAndRedirect(thumbKey);
+			};
 		}
 	}
-}			
+}
