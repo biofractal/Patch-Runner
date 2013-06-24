@@ -16,32 +16,30 @@ namespace Patch_Runner.Modules
 				if (Request.Query.error.HasValue)
 				{
 					ViewBag.HasError = true;
-					ViewBag.ErrorNumber = Request.Query.error;
+					ViewBag.ErrorMessage = ThumbsUpApi.GetErrorMessage((int)Request.Query.errorcode);
 				}
 				return View["login"];
 			};
 
 			Post["/login"] = _ =>
 			{
-				var thumbKey = ThumbsUpApi.ValidateUser((string)this.Request.Form.Username, (string)this.Request.Form.Password);
-				if (thumbKey == null)
-				{
-					return this.Context.GetRedirect("~/login?error=1");
-				}
-				return this.LoginAndRedirect(thumbKey.Value);
+				var result = ThumbsUpApi.ValidateUser((string)this.Request.Form.Username, (string)this.Request.Form.Password);
+				if (result.Success) return this.LoginAndRedirect(result.Data.ThumbKey.Value);
+				return ProcessError(result);
 			};
 
 			Get["/sso/{thumbkey}"] = url =>
 			{
-				Guid thumbKey;
-				var success = Guid.TryParse(url.thumbkey, out thumbKey);
-				if (success) success = ThumbsUpApi.ValidateKey(thumbKey);
-				if (!success)
-				{
-					return this.Context.GetRedirect("~/login?error=2");
-				}
-				return this.LoginAndRedirect(thumbKey);
+				Guid thumbKey = new Guid(url.thumbkey);
+				var result = ThumbsUpApi.ValidateKey(thumbKey);
+				if (result.Success) return this.LoginAndRedirect(thumbKey);
+				return ProcessError(result);
 			};
+		}
+
+		private dynamic ProcessError(ThumbsUpApi.ThumbsUpResult result)
+		{
+			return this.Context.GetRedirect("~/login?errorcode=" + result.Data.ErrorCode);
 		}
 	}
 }

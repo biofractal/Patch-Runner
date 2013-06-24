@@ -124,7 +124,7 @@
     <Content Include="Scripts\bootstrap-combobox.min.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Scripts\jqExtends.min.js" />
-    <Content Include="Scripts\jquery-2.0.0.min.js" />
+    <Content Include="Scripts\jquery-2.0.2.min.js" />
     <Content Include="Scripts\jquery.signalR-1.1.1.min.js" />
     <Content Include="Scripts\jstorage.min.js" />
     <Content Include="Scripts\patches.min.js" />
@@ -156,6 +156,7 @@
   <ItemGroup>
     <None Include="packages.config" />
     <Content Include="Views\login.cshtml" />
+    <Content Include="Scripts\jquery-2.0.2.min.map" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
