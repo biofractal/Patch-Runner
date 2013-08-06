@@ -4,6 +4,7 @@ using Nancy.Helper;
 using Nancy.Security;
 using Patch_Runner.Services;
 using System;
+using ThumbsUp.Helper;
 
 namespace Patch_Runner.Modules
 {
@@ -21,7 +22,7 @@ namespace Patch_Runner.Modules
 
 			Get["/logout"] = _ =>
 			{
-				var thumbKey = ((ThumbsUpApi.ThumbsUpUser)Context.CurrentUser).ThumbKey;
+				var thumbKey = ((ThumbsUpUser)Context.CurrentUser).ThumbKey;
 				ThumbsUpApi.Logout(thumbKey);
 				return this.LogoutAndRedirect("~/");
 			};

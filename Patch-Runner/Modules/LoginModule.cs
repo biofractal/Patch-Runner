@@ -4,6 +4,7 @@ using Nancy.Extensions;
 using Nancy.Helper;
 using Patch_Runner.Services;
 using System;
+using ThumbsUp.Helper;
 
 namespace Patch_Runner.Modules
 {
@@ -37,7 +38,7 @@ namespace Patch_Runner.Modules
 			};
 		}
 
-		private dynamic ProcessError(ThumbsUpApi.ThumbsUpResult result)
+		private dynamic ProcessError(ThumbsUpResult result)
 		{
 			return this.Context.GetRedirect("~/login?errorcode=" + result.Data.ErrorCode);
 		}

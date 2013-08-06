@@ -6,6 +6,7 @@ using Nancy.Helper;
 using Nancy.TinyIoc;
 using Patch_Runner.Services;
 using System.Web.Routing;
+using ThumbsUp.Helper;
 
 namespace Patch_Runner
 {

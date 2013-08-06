@@ -169,8 +169,11 @@
       <Project>{1561b149-5dce-417a-bd61-3c6e37645468}</Project>
       <Name>Nancy.Helper</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\ThumbsUp\ThumbsUp.Helper\ThumbsUp.Helper.csproj">
+      <Project>{a99fb1c2-2dd3-4e74-8180-f04daadebc77}</Project>
+      <Name>ThumbsUp.Helper</Name>
+    </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
