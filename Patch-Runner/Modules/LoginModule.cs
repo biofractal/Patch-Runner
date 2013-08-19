@@ -4,7 +4,7 @@ using Nancy.Extensions;
 using Nancy.Helper;
 using Patch_Runner.Services;
 using System;
-using ThumbsUp.Helper;
+using ThumbsUp.Client;
 
 namespace Patch_Runner.Modules
 {

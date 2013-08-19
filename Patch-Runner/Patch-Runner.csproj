@@ -71,21 +71,26 @@
     </Reference>
     <Reference Include="Nancy, Version=0.18.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nancy.0.18.0-Pre702\lib\net40\Nancy.dll</HintPath>
+      <HintPath>..\packages\Nancy.0.18.0\lib\net40\Nancy.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.Authentication.Forms, Version=0.18.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nancy.Authentication.Forms.0.18.0-Pre702\lib\net40\Nancy.Authentication.Forms.dll</HintPath>
+      <HintPath>..\packages\Nancy.Authentication.Forms.0.18.0\lib\net40\Nancy.Authentication.Forms.dll</HintPath>
+    </Reference>
+    <Reference Include="Nancy.Helper, Version=1.0.0.25573, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Nancy.Helper.1.0.0.25573\lib\net45\Nancy.Helper.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.Hosting.Aspnet">
       <HintPath>..\packages\Nancy.Hosting.Aspnet.0.18.0-Pre702\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.ViewEngines.Razor, Version=0.18.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nancy.Viewengines.Razor.0.18.0-Pre702\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
+      <HintPath>..\packages\Nancy.Viewengines.Razor.0.18.0\lib\net40\Nancy.ViewEngines.Razor.dll</HintPath>
     </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.5.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
+    <Reference Include="Newtonsoft.Json, Version=4.5.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\Newtonsoft.Json.5.0.6\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
@@ -94,10 +99,19 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\GoodPractice\Main\PropertyGrid\PropertyGrid.ClassLibrary\bin\Debug\PropertyGrid.ClassLibrary.dll</HintPath>
     </Reference>
+    <Reference Include="Raven.Abstractions-4.5, Version=2.5.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RavenDB.Client.2.5.2666\lib\net45\Raven.Abstractions-4.5.dll</HintPath>
+    </Reference>
+    <Reference Include="Raven.Client.Lightweight-4.5, Version=2.5.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\packages\RavenDB.Client.2.5.2666\lib\net45\Raven.Client.Lightweight-4.5.dll</HintPath>
+    </Reference>
     <Reference Include="RestSharp">
       <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
     </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.Composition" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data" />
     <Reference Include="System.Runtime.Caching" />
@@ -106,6 +120,9 @@
     <Reference Include="System.Web.Razor.Unofficial, Version=3.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.Web.Razor.Unofficial.2.0.2\lib\net40\System.Web.Razor.Unofficial.dll</HintPath>
+    </Reference>
+    <Reference Include="ThumbsUp.Client">
+      <HintPath>..\packages\ThumbsUp.Client.1.0.0.24133\lib\net45\ThumbsUp.Client.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -129,6 +146,7 @@
     <Content Include="Scripts\jstorage.min.js" />
     <Content Include="Scripts\patches.min.js" />
     <Content Include="Scripts\signin.min.js" />
+    <Content Include="SSL-Config.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -164,16 +182,6 @@
       <DependentUpon>Web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Nancy.Helper\Nancy.Helper\Nancy.Helper.csproj">
-      <Project>{1561b149-5dce-417a-bd61-3c6e37645468}</Project>
-      <Name>Nancy.Helper</Name>
-    </ProjectReference>
-    <ProjectReference Include="..\..\ThumbsUp\ThumbsUp.Helper\ThumbsUp.Helper.csproj">
-      <Project>{a99fb1c2-2dd3-4e74-8180-f04daadebc77}</Project>
-      <Name>ThumbsUp.Helper</Name>
-    </ProjectReference>
-  </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
@@ -203,8 +211,8 @@
     <PostBuildEvent>
 
 if $(ConfigurationName) == Debug (
-xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.18.0-Pre702\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
-xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.18.0-Pre702\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"
+xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.18.0\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
+xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.18.0\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"
 )</PostBuildEvent>
   </PropertyGroup>
   <PropertyGroup>

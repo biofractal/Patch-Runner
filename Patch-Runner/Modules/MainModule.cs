@@ -1,10 +1,8 @@
 ﻿using Nancy;
 using Nancy.Authentication.Forms;
-using Nancy.Helper;
 using Nancy.Security;
 using Patch_Runner.Services;
-using System;
-using ThumbsUp.Helper;
+using ThumbsUp.Client;
 
 namespace Patch_Runner.Modules
 {
