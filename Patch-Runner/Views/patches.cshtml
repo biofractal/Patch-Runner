@@ -1,19 +1,11 @@
 ﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
-<!DOCTYPE HTML>
-<html>
-<head>
-	<title>Patch Runner</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="../Content/bootstrap.min.css" rel="stylesheet" />
-	<link href="../Content/bootstrap-combobox.min.css" rel="stylesheet" />
-	<link href="../Content/app.css" rel="stylesheet" />
-</head>
-
-<body>
+	@{
+	Layout = "_Master.cshtml";
+	}
 	<div class="container">
 		<div class="row">
 			<div class="span10 well">
-				
+
 				<div class="form-horizontal">
 					<h2 style="margin-bottom: 40px;">Patch Runner</h2>
 					<div class="control-group">
@@ -29,68 +21,21 @@
 					<div class="control-group">
 						<label class="control-label label-left">Patches</label>
 						<div class="controls">
-								<select id="patch-name" class="span6">
-									<option value="">Choose a Patch or type to filter</option>
-									@foreach (string name in ViewBag.AllPatches.Value)
-		 {
-										<option value="@name">@name</option>
-		 }
-								</select>
+							<select id="patch-name" class="span6">
+								<option value="">Choose a Patch or type to filter</option>
+								@foreach (string name in ViewBag.AllPatches.Value)
+								{
+								<option value="@name">@name</option>
+								}
+							</select>
 						</div>
 					</div>
 				</div>
 			</div>
 		</div>
 	</div>
-
-	<div id="recent-modal" class="modal hide fade">
-		<div class="modal-header">
-			<h3>Recent Patches<a id="recent-clear" href="#" class="btn pull-right">Clear</a></h3>
-		</div>
-		<div class="modal-body" style="height: 250px">
-			<table id="recent" class="table table-striped">
-				<thead>
-					<tr>
-						<th>Date Run</th>
-						<th>Patch Name</th>
-					</tr>
-				</thead>
-				<tbody id="recent-list"></tbody>
-			</table>
-		</div>
-		<div class="modal-footer">
-			<a href="#" class="btn" data-dismiss="modal">Close</a>
-			<a id="recent-run" href="#" class="btn btn-primary btn-stateful" data-dismiss="modal">Run Again</a>
-		</div>
-	</div>
-
-	<div id="progress-modal" class="modal hide fade">
-		<div class="modal-header">
-			<h3 id="progress-name"></h3>
-		</div>
-		<div class="modal-body">
-			<h4 id="progress-percent" class="text-center"></h4>
-			<div id="progress-bar-container" class="progress">
-				<div class="bar bar-success" id="progress-bar" style="width: 0%;"></div>
-			</div>
-			<h5>Log</h5>
-			<div class="well" style="height: 200px; overflow-y: scroll">
-				<div id="progress-log"></div>
-			</div>
-		</div>
-		<div class="modal-footer">
-			<a id="patch-close" href="#" class="btn btn-stateful">Close</a>
-			<a id="patch-run-again" href="#" class="btn btn-stateful btn-primary">Run Again</a>
-		</div>
-	</div>
-
-	<script src="../scripts/jquery-2.0.2.min.js" type="text/javascript"></script>
-	<script src="../scripts/jquery.signalR-1.1.1.min.js" type="text/javascript"></script>
-	<script src="../signalr/hubs" type="text/javascript"></script>
-	<script src="../Scripts/bootstrap.min.js"></script>
-	<script src="../Scripts/bootstrap-combobox.min.js"></script>
-	<script src="../Scripts/jstorage.min.js"></script>
-	<script src="../scripts/patches.min.js" type="text/javascript"></script>
-</body>
-</html>
-
+	@section Partial
+	{
+	@Html.Partial("Partials/ProgressModal")
+	@Html.Partial("Partials/RecentModal")
+	}

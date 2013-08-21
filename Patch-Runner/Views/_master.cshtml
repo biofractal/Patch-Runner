@@ -1,0 +1,24 @@
+﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
+
+<!DOCTYPE HTML> 
+<html>
+<head>
+	<title>Patch Runner</title>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="/Content/bootstrap/bootstrap.min.css" rel="stylesheet" />
+	<link href="/Content/app.css" rel="stylesheet" />
+	@RenderSection("CSS", required: false)
+</head>
+
+<body>
+	@RenderBody()
+
+	@RenderSection("Partial", required: false) 
+
+	<script src="/Scripts/jquery-2.0.2.min.js" type="text/javascript"></script>
+	<script src="/Scripts/jquery.signalR-1.1.1.min.js" type="text/javascript"></script>
+	<script src="/signalr/hubs" type="text/javascript"></script>
+	<script src="/Scripts/bootstrap.min.js"></script>
+	@RenderSection("JS", required: false)
+</body>
+</html>

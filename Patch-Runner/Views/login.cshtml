@@ -1,15 +1,8 @@
 ﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
 
-<!DOCTYPE HTML> 
-<html>
-<head>
-	<title>Patch Runner</title>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<link href="../Content/bootstrap.min.css" rel="stylesheet" />
-	<link href="../Content/app.css" rel="stylesheet" />
-</head>
-
-<body>
+	@{
+	Layout = "_Master.cshtml";
+	}
 	<div class="container">
 		<div class="row">
 			<div class="span4 offset4 well">
@@ -20,17 +13,11 @@
 				}
 				<form method="post">
 					<input type="text" name="username" class="span4" placeholder="Username" value="biofractal">
-					<input type="password" name="password" class="span4" placeholder="Password" value="J*i9=5Wt4p_X">
+					<input type="password" name="password" class="span4" placeholder="Password" value="G*w56qY%-8sA">
 					<div class="text-center" style="padding-top:10px;">
-						<input type="submit" class="btn btn-info" value="Sign in"/>
+						<input type="submit" class="btn btn-info" value="Sign in" />
 					</div>
 				</form>
 			</div>
 		</div>
 	</div>
-	<script src="../scripts/jquery-2.0.2.min.js" type="text/javascript"></script>
-	<script src="../scripts/jquery.signalR-1.1.1.min.js" type="text/javascript"></script>
-	<script src="../signalr/hubs" type="text/javascript"></script>
-	<script src="../Scripts/bootstrap.min.js"></script>
-</body>
-</html>
