@@ -1,12 +1,5 @@
-﻿using Nancy;
-using Nancy.Helper;
-using Nancy.Session;
-using Patch_Runner;
-using System;
-using System.Collections.Generic;
+﻿using System;
 using System.Linq;
-using System.Reflection;
-using System.Web;
 
 namespace Patch_Runner.Services
 {

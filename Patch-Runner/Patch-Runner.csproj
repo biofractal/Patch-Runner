@@ -81,11 +81,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Nancy.Authentication.Forms.0.18.0\lib\net40\Nancy.Authentication.Forms.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.Helper, Version=1.0.1.19381, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\Nancy.Helper.1.0.1.19381\lib\net45\Nancy.Helper.dll</HintPath>
+    <Reference Include="Nancy.Helper">
+      <HintPath>..\packages\Nancy.Helper.1.0.5.28001\lib\net45\Nancy.Helper.dll</HintPath>
     </Reference>
-    <Reference Include="Nancy.Hosting.Aspnet">
+    <Reference Include="Nancy.Hosting.Aspnet, Version=0.18.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\Nancy.Hosting.Aspnet.0.18.0\lib\net40\Nancy.Hosting.Aspnet.dll</HintPath>
     </Reference>
     <Reference Include="Nancy.ViewEngines.Razor, Version=0.18.0.0, Culture=neutral, processorArchitecture=MSIL">
@@ -104,14 +104,6 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\GoodPractice\Main\PropertyGrid\PropertyGrid.ClassLibrary\bin\Debug\PropertyGrid.ClassLibrary.dll</HintPath>
     </Reference>
-    <Reference Include="Raven.Abstractions-4.5, Version=2.5.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Client.2.5.2666\lib\net45\Raven.Abstractions-4.5.dll</HintPath>
-    </Reference>
-    <Reference Include="Raven.Client.Lightweight-4.5, Version=2.5.0.0, Culture=neutral, PublicKeyToken=37f41c7f99471593, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\RavenDB.Client.2.5.2666\lib\net45\Raven.Client.Lightweight-4.5.dll</HintPath>
-    </Reference>
     <Reference Include="RestSharp, Version=104.1.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\RestSharp.104.1\lib\net4\RestSharp.dll</HintPath>
@@ -127,13 +119,11 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\packages\System.Web.Razor.Unofficial.2.0.2\lib\net40\System.Web.Razor.Unofficial.dll</HintPath>
     </Reference>
-    <Reference Include="ThumbsUp.Client, Version=1.0.1.28624, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ThumbsUp.Client.1.0.1.28624\lib\net45\ThumbsUp.Client.dll</HintPath>
+    <Reference Include="ThumbsUp.Client">
+      <HintPath>..\packages\ThumbsUp.Client.1.0.5.28001\lib\net45\ThumbsUp.Client.dll</HintPath>
     </Reference>
-    <Reference Include="ThumbsUp.Domain, Version=1.0.2.28624, Culture=neutral, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\ThumbsUp.Domain.1.0.2.28624\lib\net45\ThumbsUp.Domain.dll</HintPath>
+    <Reference Include="ThumbsUp.Nancy.FormsAuthentication">
+      <HintPath>..\packages\ThumbsUp.Nancy.FormsAuthentication.1.0.5.28004\lib\net45\ThumbsUp.Nancy.FormsAuthentication.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -169,7 +159,6 @@
     <Content Include="Scripts\jstorage.min.js" />
     <Content Include="Scripts\patches.min.js" />
     <Content Include="Scripts\signin.min.js" />
-    <Content Include="SSL-Config.txt" />
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -232,7 +221,6 @@
   </ProjectExtensions>
   <PropertyGroup>
     <PostBuildEvent>
-
 if $(ConfigurationName) == Debug (
 xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.18.0\BuildProviders\Nancy.ViewEngines.Razor.BuildProviders.dll" "$(ProjectDir)bin\"
 xcopy /s /y /R "$(SolutionDir)packages\Nancy.Viewengines.Razor.0.18.0\lib\Net40\Nancy.ViewEngines.Razor.dll" "$(ProjectDir)bin\"

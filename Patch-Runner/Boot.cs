@@ -4,20 +4,26 @@ using Nancy.Bootstrapper;
 using Nancy.Conventions;
 using Nancy.Helper;
 using Nancy.TinyIoc;
-using Patch_Runner.Services;
 using System.Web.Routing;
-using ThumbsUp.Client;
+using ThumbsUp.Nancy.FormsAuthentication;
 
 namespace Patch_Runner
 {
 	public class Boot : DefaultNancyBootstrapper
 	{
+
+		protected override void ConfigureRequestContainer(TinyIoCContainer container, NancyContext context)
+		{
+			base.ConfigureRequestContainer(container, context);
+			container.Register<IThumbsUpNancyApi, ThumbsUpNancyApi>();
+			container.Register<IUserMapper, ThumbsUpNancyApi>();
+		}
+
 		protected override void ApplicationStartup(TinyIoCContainer container, IPipelines pipelines)
 		{
 			base.ApplicationStartup(container, pipelines);
 
 			this.Conventions.StaticContentsConventions.Add(StaticContentConventionBuilder.AddDirectory("Scripts"));
-			container.Register<IUserMapper, ThumbsUpApi>();	
 			pipelines.AfterRequest += ctx =>
 			{
 				ctx.CheckForIfNoneMatch();
@@ -25,8 +31,6 @@ namespace Patch_Runner
 			};
 			RouteTable.Routes.MapHubs();
 		}
-
-
 
 		protected override void RequestStartup(TinyIoCContainer requestContainer, IPipelines pipelines, NancyContext context)
 		{

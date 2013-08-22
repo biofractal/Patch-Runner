@@ -2,13 +2,13 @@
 using Nancy.Authentication.Forms;
 using Nancy.Security;
 using Patch_Runner.Services;
-using ThumbsUp.Client;
+using ThumbsUp.Nancy.FormsAuthentication;
 
 namespace Patch_Runner.Modules
 {
 	public class MainModule : NancyModule
 	{
-		public MainModule()
+		public MainModule(IThumbsUpNancyApi thumbsUp)
 		{
 			this.RequiresAuthentication();
 
@@ -20,12 +20,10 @@ namespace Patch_Runner.Modules
 
 			Get["/logout"] = _ =>
 			{
-				var thumbKey = ((ThumbsUpUser)Context.CurrentUser).ThumbKey;
-				ThumbsUpApi.Logout(thumbKey);
+				var thumbKey = ((ThumbsUpNancyUser)Context.CurrentUser).ThumbKey;
+				thumbsUp.Logout(thumbKey);
 				return this.LogoutAndRedirect("~/");
 			};
 		}
 	}
 }
-
-

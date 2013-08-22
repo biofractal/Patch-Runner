@@ -1,30 +1,30 @@
 ﻿using Nancy;
 using Nancy.Authentication.Forms;
 using Nancy.Extensions;
-using Nancy.Helper;
-using Patch_Runner.Services;
 using System;
 using ThumbsUp.Client;
+using ThumbsUp.Nancy.FormsAuthentication;
+
 
 namespace Patch_Runner.Modules
 {
 	public class LoginModule : NancyModule
 	{
-		public LoginModule()
+		public LoginModule(IThumbsUpNancyApi thumbsUp)
 		{
 			Get["/login"] = _ =>
 			{
 				if (Request.Query.error.HasValue)
 				{
 					ViewBag.HasError = true;
-					ViewBag.ErrorMessage = ThumbsUpApi.GetErrorMessage((int)Request.Query.errorcode);
+					ViewBag.ErrorMessage = thumbsUp.GetErrorMessage((int)Request.Query.errorcode);
 				}
 				return View["login"];
 			};
 
 			Post["/login"] = _ =>
 			{
-				var result = ThumbsUpApi.ValidateUser((string)this.Request.Form.Username, (string)this.Request.Form.Password);
+				var result = thumbsUp.ValidateUser((string)this.Request.Form.Username, (string)this.Request.Form.Password);
 				if (result.Success) return this.LoginAndRedirect(result.Data.ThumbKey.Value);
 				return ProcessError(result);
 			};
@@ -32,7 +32,7 @@ namespace Patch_Runner.Modules
 			Get["/sso/{thumbkey}"] = url =>
 			{
 				Guid thumbKey = new Guid(url.thumbkey);
-				var result = ThumbsUpApi.ValidateKey(thumbKey);
+				var result = thumbsUp.ValidateKey(thumbKey);
 				if (result.Success) return this.LoginAndRedirect(thumbKey);
 				return ProcessError(result);
 			};

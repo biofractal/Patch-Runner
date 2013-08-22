@@ -1,11 +1,7 @@
 ﻿using Microsoft.AspNet.SignalR;
-using Nancy;
-using Nancy.Session;
-using Patch_Runner;
 using Patch_Runner.Services;
 using System;
 using System.Diagnostics;
-using System.Threading;
 
 namespace Patch_Runner
 {
