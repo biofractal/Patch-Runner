@@ -1,41 +1,43 @@
 ﻿@inherits Nancy.ViewEngines.Razor.NancyRazorViewBase<dynamic>
-	@{
-	Layout = "_Master.cshtml";
-	}
-	<div class="container">
-		<div class="row">
-			<div class="span10 well">
+    @{
+    Layout = "_Master.cshtml";
+    }
+    <div class="container">
+        <h3>Patch Runner</h3>
+        <div class="row col-md-10 well">
 
-				<div class="form-horizontal">
-					<h2 style="margin-bottom: 40px;">Patch Runner</h2>
-					<div class="control-group">
-						<div class="controls">
-							<div class="btn-group">
-								<button id="recent-view" class="btn"><i class="icon-eye-open"></i> View Recent</button>
-								<a href="/logout" class="btn"><i class="icon-off"></i> Sign Out</a>
-								<a id="patch-run" href="#" class="btn btn-primary"><i class="icon-play-circle icon-white"></i> Run Patch</a>
-							</div>
+            <div class="row col-md-12">
+                <div class="control-group">
+                    <div class="controls">
+                        <div class="btn-group pull-right">
+                            <button id="recent-view" class="btn"><span class="glyphicon glyphicon-eye-open"></span> View Recent</button>
+                            <a href="/logout" class="btn"><span class="glyphicon glyphicon-remove"></span> Sign Out</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
-						</div>
-					</div>
-					<div class="control-group">
-						<label class="control-label label-left">Patches</label>
-						<div class="controls">
-							<select id="patch-name" class="span6">
-								<option value="">Choose a Patch or type to filter</option>
-								@foreach (string name in ViewBag.AllPatches.Value)
-								{
-								<option value="@name">@name</option>
-								}
-							</select>
-						</div>
-					</div>
-				</div>
-			</div>
-		</div>
-	</div>
-	@section Partial
-	{
-	@Html.Partial("Partials/ProgressModal")
-	@Html.Partial("Partials/RecentModal")
-	}
+            <div class="row col-md-8">
+                <div role="form">
+                    <div class="control-group">
+                        <div class="controls">
+                            <select id="patch-name" class="col-md-8">
+                                <option value="">Choose a Patch or type to filter</option>
+                                @foreach (string name in ViewBag.AllPatches.Value)
+                                {
+                                <option value="@name">@name</option>
+                                }
+                            </select>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <a id=" patch-run" href="#" class="btn btn-success pull-right"><span class="glyphicon glyphicon-play"></span> Run Patch</a>
+        </div>
+    </div>
+
+    @section Partial
+    {
+    @Html.Partial("Partials/ProgressModal")
+    @Html.Partial("Partials/RecentModal")
+    }
